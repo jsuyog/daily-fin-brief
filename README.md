@@ -7,48 +7,6 @@ Live site (after you push + enable Pages): `https://<your-username>.github.io/da
 
 ---
 
-## Architecture (Full Automation)
-
-```mermaid
-flowchart TB
-    subgraph Triggers
-        A[Cron Schedule<br/>Mon–Fri 16:00 IST] 
-        B[Manual Trigger<br/>workflow_dispatch]
-    end
-
-    subgraph GitHub Actions CI/CD
-        C[Checkout Repo]
-        D[Setup Python 3.12]
-        E[generate_brief.py]
-        F[Git Commit + Push<br/>briefs.json]
-    end
-
-    subgraph Generation Pipeline
-        G[Fetch Market Data<br/>Nifty · Sensex · Sectors · News]
-        H[GenAI Layer<br/>Grok / LLM]
-        I[Structured JSON Brief]
-    end
-
-    subgraph Storage
-        J[(data/briefs.json<br/>Source of Truth)]
-    end
-
-    subgraph Delivery
-        K[Static Frontend<br/>index.html + JS]
-        L[GitHub Pages<br/>CDN Hosting]
-        M[User Browser<br/>Cards → Detail View]
-    end
-
-    A --> C
-    B --> C
-    C --> D --> E
-    E --> G --> H --> I
-    I --> F
-    F --> J
-    J --> K
-    K --> L --> M
-```
-
 ### High-level flow (what happens every day)
 
 1. **Trigger** — GitHub Actions runs on schedule (after market close) or manually
