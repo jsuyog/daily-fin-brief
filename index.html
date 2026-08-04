@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Fin Brief</title>
+  <meta name="description" content="Automated daily Indian stock market briefs — Nifty, Sensex, sectors, drivers & outlook. DevOps + GenAI project.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: {
+              900: '#0a0e17',
+              800: '#111827',
+              700: '#1a2332',
+              600: '#243044',
+              500: '#2d3a4f'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .card { transition: all 0.25s ease; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px -8px rgba(0,0,0,0.5); }
+    .positive { color: #10b981; }
+    .negative { color: #ef4444; }
+    .detail-enter { animation: slideIn 0.3s ease; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-dark-900 text-gray-100 min-h-screen">
+  <!-- Header -->
+  <header class="border-b border-dark-600 bg-dark-800/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-emerald-500 flex items-center justify-center font-bold text-sm">SF</div>
+        <div>
+          <h1 class="font-bold text-base tracking-tight">Daily Fin Brief</h1>
+          <p class="text-[11px] text-gray-400">GenAI + GitHub Actions</p>
+        </div>
+      </div>
+      <a href="https://x.com/suyog_j_" target="_blank" class="text-xs px-2.5 py-1 rounded-lg bg-dark-600 hover:bg-dark-500 transition flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        @suyog_j_
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-6">
+    <!-- Intro -->
+    <div class="mb-6">
+      <p class="text-sm text-gray-400">Latest market briefs </p>
+    </div>
+
+    <!-- Cards Container -->
+    <div id="cards-container" class="space-y-4">
+      <!-- JS will render cards here -->
+    </div>
+
+    <!-- Detail View (hidden by default) -->
+    <div id="detail-view" class="hidden detail-enter">
+      <button onclick="showCards()" class="mb-5 text-sm text-blue-400 hover:text-blue-300 flex items-center gap-1.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Back to all briefs
+      </button>
+      <div id="detail-content"></div>
+    </div>
+
+    <!-- Empty state -->
+    <div id="empty" class="hidden text-center py-16 text-gray-500">
+      No briefs available yet.
+    </div>
+  </main>
+
+  <footer class="border-t border-dark-600 py-5 mt-10">
+    <div class="max-w-3xl mx-auto px-4 text-center text-xs text-gray-500 space-y-1">
+      <p>Built by Suyog Jagtap</p>
+    </div>
+  </footer>
+
+  <script>
+    // Embedded fallback so the page works when opened via file:// (no server)
+    // In production (GitHub Pages / local server) it prefers the live data/briefs.json
+    const EMBEDDED_BRIEFS = [{"date":"2026-08-04","day":"Tuesday","status":"closed","updated_at":"2026-08-04T16:45:00+05:30","summary":{"nifty":{"value":24614.9,"change":-159.4,"change_pct":-0.64,"prev_close":24774.3,"open":24703.9,"day_high":24703.9,"day_low":24529.6},"sensex":{"value":78428.95,"change":-210.08,"change_pct":-0.27,"prev_close":78639.03},"market_bias":"mildly negative","top_performer":{"name":"Hindalco / Trent / BEL","change_pct":2.0,"reason":"Metals and select consumption/defence names held firm while banks & IT cooled"},"headline":"Nifty snaps 4-day winning streak · Closes 24,615 (−0.64%) · Caution ahead of RBI policy"},"market_overview":"Indian equities ended lower on Tuesday and snapped a four-day winning streak. The Nifty 50 closed at 24,614.90, down 159 points (−0.64%), while the Sensex settled at 78,428.95, down 210 points (−0.27%). Bank Nifty was the clear underperformer, falling 1.30% to 57,491. Markets opened soft and stayed under pressure for most of the session as participants turned cautious ahead of the RBI monetary policy decision due on Wednesday. Profit-booking was visible in banks, IT and FMCG after Monday’s strong rally. Metals remained relatively resilient.","drivers":[{"tag":"RBI POLICY AHEAD","color":"blue","text":"Investors stayed on the sidelines ahead of the RBI MPC outcome (scheduled around 3–5 Aug). Rate-sensitive and banking stocks saw clear profit-taking."},{"tag":"PROFIT BOOKING","color":"amber","text":"After four consecutive gains that took Nifty to multi-month highs, some cooling was natural. Index opened near 24,704 and drifted lower through the day."},{"tag":"LIC OFS + FINANCIALS","color":"red","text":"Government stake sale in LIC kept life insurance and broader financials under pressure. HDFC Life and Grasim were among the biggest Nifty losers."},{"tag":"CAS MECHANISM","color":"gray","text":"Second day of the new Closing Auction Session for F&O stocks. End-of-day price discovery continued to show some volatility and divergence."},{"tag":"METALS RESILIENCE","color":"green","text":"Metals held up better than the broader market. Hindalco, Tata Steel and BEL found buyers even on a weak day."}],"sectors":[{"name":"Metals","status":"Resilient / +ve","bias":"positive"},{"name":"IT","status":"Profit booking","bias":"negative"},{"name":"Banks","status":"−1.30% (Bank Nifty)","bias":"negative"},{"name":"FMCG","status":"Weak (HUL drag)","bias":"negative"},{"name":"Realty","status":"−2%+","bias":"negative"},{"name":"Auto","status":"Mixed to soft","bias":"negative"}],"focus_stocks":{"strength":[{"name":"Hindalco","note":"Extended gains, relative strength"},{"name":"Trent","note":"Among top gainers"},{"name":"BEL","note":"Defence / capital goods interest"},{"name":"Bajaj Finance","note":"Held better in financials"},{"name":"Tata Steel","note":"Metals support"}],"pressure":[{"name":"Grasim","note":"Top Nifty loser"},{"name":"HDFC Life / HUL","note":"Insurance & FMCG under pressure"},{"name":"HDFC Bank / Reliance","note":"Heavyweights dragged the index"},{"name":"Bank Nifty pack","note":"−1.30%"},{"name":"IT majors","note":"Profit booking after Monday’s rally"}]},"global_cues":"Asian markets were mixed. Global risk appetite stayed muted with investors watching geopolitical developments and central bank commentary. Soft crude from the previous session still offers some medium-term relief on the inflation front, but near-term focus remains on the RBI event.","fii_dii":"Monday: FIIs bought ₹922 Cr, DIIs bought ₹1,517 Cr. Continuity of institutional flows after the RBI outcome will be important.","outlook":["The four-day winning streak has paused — a healthy development after the sharp run-up. Support for Nifty is visible in the 24,400–24,500 zone.","RBI policy tomorrow is the immediate event risk. Expect muted or range-bound action until the policy statement and commentary are absorbed.","Stock-specific opportunities continue to work better than broad beta. Metals, select retail and defence names showed relative strength even on a down day.","Avoid aggressive fresh longs in IT and private banks until clarity emerges from RBI. Prefer waiting for cleaner setups.","Watch whether FIIs remain buyers after the policy. Sustained inflows + stable crude remain the key medium-term supports."],"impact_next_day":{"title":"Impact on Tomorrow / Next Trading Day (AI Assessment)","summary":"Today’s mild decline and the caution ahead of RBI make Wednesday a high-event day. The base case is a range-bound to slightly positive open if the policy is as expected (status quo + neutral stance). Any hawkish surprise or strong guidance on inflation/liquidity can keep banks and rate-sensitive stocks under pressure. Conversely, a dovish tilt or supportive liquidity commentary can quickly revive the recent uptrend.","key_points":["RBI is the single biggest near-term catalyst. Markets have already priced in some caution — a clean status-quo outcome can act as a relief trigger.","Bank Nifty’s underperformance today means any positive policy commentary can produce a sharper rebound in financials.","Nifty support zone 24,400–24,500 remains important. A decisive break below it on policy day would signal deeper consolidation.","Metals and select consumption names that held firm today are likely to continue relative strength if the broader market stabilises.","FII flow direction post-policy will decide whether the 4-day pause remains healthy consolidation or turns into a multi-day correction."],"bias_for_tomorrow":"Event-driven · Range-bound to mildly positive if RBI is in-line; cautious if hawkish"},"previous_day_note":"Monday (3 Aug): Nifty closed 24,774 (+1.60%), Sensex 78,639 (+0.70%). IT led with +2.5–3.3%. Driven by crude drop and strong FII/DII buying. First day of CAS mechanism.","up_stocks":[{"name":"Hindalco","ticker":"HINDALCO","price_note":"One of the few large-caps that stayed green while Nifty fell 0.64%","change_note":"Relative strength","reasoning":"Metals was the only major sector that remained resilient. Hindalco attracted buying even as banks, IT and FMCG saw profit-booking after Monday’s rally. Relative strength signal on a weak tape.","news":"Closing wrap flagged metals (Hindalco, Tata Steel) as positive trades while heavyweights dragged the index.","trend_note":"Held gains while broader market reversed the 4-day winning streak.","chart":"https://finance.yahoo.com/quote/HINDALCO.NS","chart_label":"Yahoo Finance · HINDALCO.NS"},{"name":"Trent","ticker":"TRENT","price_note":"Among the top market gainers on a down day","change_note":"Positive","reasoning":"Select retail/consumption strength. While HUL and broader FMCG were sold, Trent continued to see interest — divergence within the consumption space that often signals stock-specific momentum rather than sector rotation.","news":"Listed among top gainers in the closing market wrap.","trend_note":"Outperformed Nifty and most consumption peers today.","chart":"https://finance.yahoo.com/quote/TRENT.NS","chart_label":"Yahoo Finance · TRENT.NS"},{"name":"BEL (Bharat Electronics)","ticker":"BEL","price_note":"Defence / capital goods interest held up","change_note":"Positive","reasoning":"Defence names continued to attract flows independent of the broader profit-booking. Order-book and policy narrative around defence spending kept BEL relatively insulated from the RBI-event caution that hit banks.","news":"Among the positive trades highlighted in the closing wrap.","trend_note":"Defensive growth pocket that ignored the index decline.","chart":"https://finance.yahoo.com/quote/BEL.NS","chart_label":"Yahoo Finance · BEL.NS"},{"name":"Bajaj Finance","ticker":"BAJFINANCE","price_note":"Held better than the banking pack (Bank Nifty −1.3%)","change_note":"Relative strength in financials","reasoning":"Bank Nifty fell ~1.3% on RBI-event caution, but Bajaj Finance showed clearer resilience. NBFC names with strong retail franchise often decouple from pure rate-sensitive banks when flows stay selective.","news":"Among financial names that held up better while HDFC Bank and broader banks were sold.","trend_note":"Outperformed Bank Nifty on the day.","chart":"https://finance.yahoo.com/quote/BAJFINANCE.NS","chart_label":"Yahoo Finance · BAJFINANCE.NS"},{"name":"Tata Steel","ticker":"TATASTEEL","price_note":"Metals support alongside Hindalco","change_note":"Resilient","reasoning":"Part of the same metals resilience. While the rest of the market booked profits after a 4-day rally, steel names found buyers — consistent with the sector staying in positive territory in the closing wrap.","news":"Metals remained resilient; Tata Steel and Hindalco were among the positive trades.","trend_note":"Held while Nifty and Bank Nifty declined.","chart":"https://finance.yahoo.com/quote/TATASTEEL.NS","chart_label":"Yahoo Finance · TATASTEEL.NS"}],"down_stocks":[{"name":"Grasim","ticker":"GRASIM","price_note":"Top Nifty loser after +5% surge on Monday","change_note":"Sharp decline","reasoning":"Classic profit-booking after a strong Monday (+~5%). When a stock gaps up or rallies hard into an event-risk day (RBI), it often becomes the first place for short-term traders to take money off the table. Reversal was one of the largest on the Nifty board.","news":"Among the biggest Nifty losers in the closing session.","trend_note":"Sharp pullback after Monday’s surge to multi-session highs.","chart":"https://finance.yahoo.com/quote/GRASIM.NS","chart_label":"Yahoo Finance · GRASIM.NS"},{"name":"HDFC Life","ticker":"HDFCLIFE","price_note":"Insurance under clear pressure","change_note":"Notable decline","reasoning":"Double overhang: (1) LIC OFS kept the entire life-insurance complex soft, and (2) rate-event caution ahead of RBI reduced risk appetite in financials. Life insurers often underperform when both OFS supply and policy uncertainty hit the same week.","news":"Insurance counters were among the weaker names; LIC OFS remained a drag.","trend_note":"Pressure from OFS + pre-RBI positioning.","chart":"https://finance.yahoo.com/quote/HDFCLIFE.NS","chart_label":"Yahoo Finance · HDFCLIFE.NS"},{"name":"HUL (Hindustan Unilever)","ticker":"HINDUNILVR","price_note":"Clear FMCG drag on the index","change_note":"Weak","reasoning":"FMCG saw broad profit-taking after Monday’s gains. HUL, being a heavyweight, amplified the index move lower. No stock-specific negative news — pure sector rotation / profit-booking after the recent run.","news":"Listed among top market drags / Sensex losers in the closing wrap.","trend_note":"Soft with the broader FMCG pack.","chart":"https://finance.yahoo.com/quote/HINDUNILVR.NS","chart_label":"Yahoo Finance · HINDUNILVR.NS"},{"name":"HDFC Bank","ticker":"HDFCBANK","price_note":"Heavyweight banking drag (Bank Nifty −1.3%)","change_note":"Negative","reasoning":"Banks were the weakest major group. Pre-RBI positioning typically sees traders reduce exposure in rate-sensitive names. As the largest private bank, HDFC Bank’s decline had outsized impact on both Nifty and Bank Nifty.","news":"Faced selling pressure along with other banking heavyweights.","trend_note":"Part of the broader banking profit-booking ahead of policy.","chart":"https://finance.yahoo.com/quote/HDFCBANK.NS","chart_label":"Yahoo Finance · HDFCBANK.NS"},{"name":"Reliance Industries","ticker":"RELIANCE","price_note":"Large-cap drag on Nifty","change_note":"Negative","reasoning":"No single headline — weight-of-money effect. On a day when FIIs/DIIs were cautious and heavyweights were sold, Reliance’s size meant even a modest decline pulled the index lower. Typical behaviour on event-risk sessions.","news":"Listed among top market drags in the closing wrap.","trend_note":"Soft with other large-caps on the day.","chart":"https://finance.yahoo.com/quote/RELIANCE.NS","chart_label":"Yahoo Finance · RELIANCE.NS"}]},{"date":"2026-08-03","day":"Monday","status":"closed","updated_at":"2026-08-03T16:00:00+05:30","summary":{"nifty":{"value":24774.3,"change":390.7,"change_pct":1.6,"prev_close":24383.6},"sensex":{"value":78639.03,"change":544.39,"change_pct":0.7,"prev_close":78094.64},"market_bias":"strongly positive","top_performer":{"name":"TCS / InterGlobe","change_pct":4.5,"reason":"IT & Aviation led the rally"},"headline":"4th straight gain · Nifty hits 5-month high · Crude drop + FII buying"},"market_overview":"Indian equities extended gains for a fourth consecutive session. Nifty closed at 24,774 (+1.60%) and Sensex at 78,639 (+0.70%), driven by a sharp fall in crude oil prices and renewed FII buying. IT was the clear sector leader. This was also the first trading day under SEBI’s new Closing Auction Session (CAS) mechanism for F&O stocks.","drivers":[{"tag":"CRUDE DROP","color":"green","text":"Brent tumbled ~4.6–5% on easing West Asia geopolitical tensions, reducing inflation and import bill concerns."},{"tag":"FII BUYING","color":"green","text":"FIIs bought ₹922 Cr, DIIs ₹1,517 Cr — strong institutional support after recent selling."},{"tag":"IT RALLY","color":"green","text":"Nifty IT surged 2.5–3.3%. TCS, Infosys and other heavyweights led the charge."}],"sectors":[{"name":"IT","status":"+2.5–3.3%","bias":"positive"},{"name":"Auto","status":"+1.5%","bias":"positive"},{"name":"Pharma","status":"mild ↓","bias":"negative"},{"name":"Banks","status":"+1.4–1.9%","bias":"positive"},{"name":"FMCG","status":"+1.7%","bias":"positive"},{"name":"Metal","status":"+1.5%","bias":"positive"}],"focus_stocks":{"strength":[{"name":"TCS","note":"+4.57%"},{"name":"InterGlobe Aviation","note":"+4.43%"},{"name":"Infosys","note":"+3.5%+"},{"name":"Grasim","note":"+5.13%"}],"pressure":[{"name":"Sun Pharma","note":"−1.3% to −2%"},{"name":"Apollo Hospitals","note":"−1.5%"}]},"global_cues":"Positive risk sentiment after crude correction and hopes of diplomatic progress on Iran. US markets had closed higher on Friday.","fii_dii":"FIIs +₹922 Cr, DIIs +₹1,517 Cr.","outlook":["Strong breakout session. New Closing Auction Session (CAS) mechanism implemented.","Broad-based buying except Media. Midcap and Smallcap also hit fresh highs.","Momentum can continue if crude stays soft and FIIs remain buyers."],"impact_next_day":{"title":"Impact on Next Trading Day (AI Assessment)","summary":"Strong close with IT leadership and FII support created positive momentum into Tuesday. However, the new CAS mechanism and upcoming RBI event meant some consolidation was likely.","key_points":["Positive momentum from crude relief and FII buying carried into the next session open.","IT strength suggested continued interest in the sector on a short-term basis.","RBI event risk was the main reason for caution the following day."],"bias_for_tomorrow":"Constructive but event-aware"},"previous_day_note":"","up_stocks":[{"name":"TCS","ticker":"TCS","price_note":"~₹2,450–2,474 (+~3.5–4.6%)","change_note":"+~3.5–4.6%","reasoning":"IT was the top sector (+2.5–3.3%). TCS led the heavyweight move with a clear volume spike and close near the day’s high — classic momentum continuation after the crude-driven risk-on session.","news":"IT heavyweights drove Nifty; TCS among top Sensex gainers.","trend_note":"Approx closes: 2296 → 2398 → 2432 → 2366 → 2474","chart":"https://finance.yahoo.com/quote/TCS.NS","chart_label":"Yahoo Finance · TCS.NS"},{"name":"Infosys","ticker":"INFY","price_note":"~₹1,145–1,180 (+~4.4%)","change_note":"+~4.4%","reasoning":"Same IT leadership as TCS. High volume + breakout character. Global tech cues and the domestic risk-on tape (crude drop + FII buying) both supported the move.","news":"Nifty IT was the top sector; Infosys participated fully.","trend_note":"Approx: ~1079 → 1106 → 1156 → 1130 → 1180","chart":"https://finance.yahoo.com/quote/INFY.NS","chart_label":"Yahoo Finance · INFY.NS"},{"name":"Grasim","ticker":"GRASIM","price_note":"~₹3,100–3,260 (+~5.1%)","change_note":"+~5.1%","reasoning":"One of the largest single-day moves on the Nifty. Cement strength + technical upgrade signals. Became the standout non-IT gainer on a broad-based up day.","news":"Top Nifty gainer on the day.","trend_note":"Steady climb into session high.","chart":"https://finance.yahoo.com/quote/GRASIM.NS","chart_label":"Yahoo Finance · GRASIM.NS"},{"name":"IndiGo","ticker":"INDIGO","price_note":"~₹5,171–5,300 (+~4.2–4.4%)","change_note":"+~4.2–4.4%","reasoning":"Direct beneficiary of the sharp crude drop (~4.6–5%). Lower fuel costs improve airline margins; volume confirmed the move. Classic commodity-cost relief trade.","news":"Sensex top gainer; aviation bounce on lower crude.","trend_note":"Recovery from recent lows on the crude relief.","chart":"https://finance.yahoo.com/quote/INDIGO.NS","chart_label":"Yahoo Finance · INDIGO.NS"},{"name":"Shriram Finance / Axis Bank","ticker":"SHRIRAMFIN / AXISBANK","price_note":"Shriram ~₹1,058 (+~4%); Axis participated in banking strength","change_note":"+~4% / strong","reasoning":"Financials joined the broad rally. Bank Nifty and private banks participated; Shriram’s move reflected NBFC strength alongside the banking up-move.","news":"Broad financial gains on the day.","trend_note":"Banking and NBFC flow participation.","chart":"https://finance.yahoo.com/quote/SHRIRAMFIN.NS","chart_label":"Yahoo Finance · SHRIRAMFIN.NS"}],"down_stocks":[{"name":"Sun Pharma","ticker":"SUNPHARMA","price_note":"~₹1,963 (–1.4%)","change_note":"–1.4%","reasoning":"Pharma was one of the few sectors that did not participate in the broad rally. Relative underperformance after recent strength; some post-earnings / US-sales related caution remained in the name.","news":"Notable Nifty loser while most sectors were green.","trend_note":"Pullback from the ~2,000 zone.","chart":"https://finance.yahoo.com/quote/SUNPHARMA.NS","chart_label":"Yahoo Finance · SUNPHARMA.NS"},{"name":"Apollo Hospitals","ticker":"APOLLOHOSP","price_note":"~₹8,820 (–1.5%)","change_note":"–1.5%","reasoning":"Had run hard into record-high territory; the broad up-day became an opportunity for profit-booking in an extended name. Classic ‘sell the strength’ behaviour after a parabolic stretch.","news":"Among the top losers on an otherwise strong day.","trend_note":"Sharp pullback from recent highs.","chart":"https://finance.yahoo.com/quote/APOLLOHOSP.NS","chart_label":"Yahoo Finance · APOLLOHOSP.NS"},{"name":"Maruti Suzuki","ticker":"MARUTI","price_note":"Mild decline","change_note":"Mild red","reasoning":"Auto lagged the broad rally. While IT, financials and metals surged, Maruti did not attract the same flows — relative underperformance inside an otherwise risk-on session.","news":"Among Sensex names that finished lower.","trend_note":"Lagged the broader market advance.","chart":"https://finance.yahoo.com/quote/MARUTI.NS","chart_label":"Yahoo Finance · MARUTI.NS"},{"name":"Bharti Airtel","ticker":"BHARTIARTL","price_note":"Soft","change_note":"Soft","reasoning":"Telecom stayed out of the leadership group. No major positive catalyst on the day while capital rotated into IT and financials.","news":"Telecom remained under relative pressure.","trend_note":"Soft while the index made multi-month highs.","chart":"https://finance.yahoo.com/quote/BHARTIARTL.NS","chart_label":"Yahoo Finance · BHARTIARTL.NS"},{"name":"ONGC / Tech Mahindra","ticker":"ONGC / TECHM","price_note":"Mild red / lag","change_note":"Mild red","reasoning":"ONGC: crude volatility cut both ways — the same crude drop that helped airlines and the macro narrative was less helpful for upstream oil. TechM: lagged the stronger IT names (TCS/Infosys) inside the sector rally.","news":"Relative underperformers within their groups.","trend_note":"Sector-specific lag + selective profit-taking.","chart":"https://finance.yahoo.com/quote/ONGC.NS","chart_label":"Yahoo Finance · ONGC.NS"}]}];
+
+            let briefs = [];
+
+    async function loadBriefs() {
+      try {
+        // Works on GitHub Pages / local HTTP server
+        const res = await fetch('./data/briefs.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Fetch failed: ' + res.status);
+        briefs = await res.json();
+      } catch (e) {
+        // Falls back when opened as file:// (browser blocks local fetch)
+        console.warn('Using embedded data (file:// or offline). For live updates use a local server or GitHub Pages.', e.message);
+        briefs = EMBEDDED_BRIEFS;
+      }
+      // Ensure newest first
+      briefs.sort((a, b) => new Date(b.date) - new Date(a.date));
+      renderCards();
+    }
+
+    function renderCards() {
+      const container = document.getElementById('cards-container');
+      container.innerHTML = '';
+      document.getElementById('detail-view').classList.add('hidden');
+      container.classList.remove('hidden');
+
+      if (!briefs.length) {
+        document.getElementById('empty').classList.remove('hidden');
+        return;
+      }
+
+      briefs.forEach((b, idx) => {
+        const isToday = idx === 0;
+        const nifty = b.summary.nifty;
+        const changeClass = nifty.change_pct >= 0 ? 'positive' : 'negative';
+        const changeSign = nifty.change_pct >= 0 ? '+' : '';
+        const statusBadge = b.status === 'open' 
+          ? `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] bg-emerald-500/15 text-emerald-400 border border-emerald-500/25">
+               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> OPEN
+             </span>`
+          : `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] bg-gray-500/15 text-gray-400 border border-gray-500/25">CLOSED</span>`;
+
+        const card = document.createElement('div');
+        card.className = `card bg-dark-800 border ${isToday ? 'border-blue-500/40' : 'border-dark-600'} rounded-2xl p-5 cursor-pointer`;
+        card.onclick = () => showDetail(b.date);
+
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="font-semibold text-sm">${formatDate(b.date)} · ${b.day}</span>
+                ${statusBadge}
+                ${isToday ? '<span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300">LATEST</span>' : ''}
+              </div>
+              <p class="text-xs text-gray-400 line-clamp-1">${b.summary.headline}</p>
+            </div>
+            <div class="text-right shrink-0">
+              <p class="text-xs text-gray-400">NIFTY</p>
+              <p class="font-bold mono text-sm">${nifty.value.toLocaleString('en-IN')}</p>
+              <p class="text-xs mono ${changeClass}">${changeSign}${nifty.change_pct.toFixed(2)}%</p>
+            </div>
+          </div>
+          <div class="mt-3 pt-3 border-t border-dark-600 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-gray-500 uppercase tracking-wide">Top</span>
+              <span class="text-xs font-medium text-emerald-400">${b.summary.top_performer.name}</span>
+              <span class="text-[11px] mono positive">+${b.summary.top_performer.change_pct}%</span>
+            </div>
+            <span class="text-xs text-gray-500">View brief →</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function showDetail(date) {
+      const b = briefs.find(x => x.date === date);
+      if (!b) return;
+
+      document.getElementById('cards-container').classList.add('hidden');
+      const detail = document.getElementById('detail-view');
+      detail.classList.remove('hidden');
+
+      const nifty = b.summary.nifty;
+      const changeClass = nifty.change_pct >= 0 ? 'positive' : 'negative';
+      const changeSign = nifty.change_pct >= 0 ? '+' : '';
+
+      const driversHtml = b.drivers.map(d => `
+        <div class="bg-dark-700 border border-dark-600 rounded-xl p-3.5">
+          <p class="text-[10px] font-semibold tracking-wide mb-1 ${
+            d.color === 'green' ? 'text-emerald-400' :
+            d.color === 'red' ? 'text-red-400' :
+            d.color === 'blue' ? 'text-blue-400' :
+            d.color === 'amber' ? 'text-amber-400' : 'text-gray-400'
+          }">${d.tag}</p>
+          <p class="text-sm text-gray-300">${d.text}</p>
+        </div>
+      `).join('');
+
+      const sectorsHtml = b.sectors.map(s => `
+        <div class="bg-dark-700 border border-dark-600 rounded-xl p-3 text-center">
+          <p class="text-[11px] text-gray-400 mb-0.5">${s.name}</p>
+          <p class="text-sm font-medium ${s.bias === 'positive' ? 'positive' : s.bias === 'negative' ? 'negative' : 'text-gray-300'}">${s.status}</p>
+        </div>
+      `).join('');
+
+      // Rich Top 5 Up / Down (matches your automation style) if available
+      const upStocks = b.up_stocks || [];
+      const downStocks = b.down_stocks || [];
+
+      const upStocksHtml = upStocks.length ? upStocks.map((s, i) => `
+        <div class="bg-dark-700 border border-dark-600 rounded-xl p-4 ${i < upStocks.length - 1 ? 'mb-3' : ''}">
+          <div class="flex items-start justify-between gap-2 mb-1.5">
+            <p class="font-semibold text-sm text-emerald-400">${i + 1}. ${s.name} <span class="text-gray-500 font-normal text-xs">(${s.ticker})</span></p>
+            <span class="text-xs mono positive shrink-0">${s.change_note || ''}</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-1">${s.price_note || ''}</p>
+          <p class="text-sm text-gray-300 mb-1.5"><span class="text-gray-500">Why:</span> ${s.reasoning || ''}</p>
+          <p class="text-xs text-gray-400 mb-1"><span class="text-gray-500">News:</span> ${s.news || ''}</p>
+          ${s.trend_note ? `<p class="text-xs text-gray-500">Trend: ${s.trend_note}</p>` : ''}
+          ${s.chart ? `<p class="text-[11px] mt-1.5"><a href="${s.chart}" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline underline-offset-2">${s.chart_label || 'View chart →'}</a></p>` : ''}
+        </div>
+      `).join('') : (b.focus_stocks?.strength || []).map(s => `
+        <div class="flex justify-between py-2.5 border-b border-dark-600 last:border-0">
+          <span class="text-sm">${s.name}</span>
+          <span class="text-sm mono positive">${s.note}</span>
+        </div>
+      `).join('');
+
+      const downStocksHtml = downStocks.length ? downStocks.map((s, i) => `
+        <div class="bg-dark-700 border border-dark-600 rounded-xl p-4 ${i < downStocks.length - 1 ? 'mb-3' : ''}">
+          <div class="flex items-start justify-between gap-2 mb-1.5">
+            <p class="font-semibold text-sm text-red-400">${i + 1}. ${s.name} <span class="text-gray-500 font-normal text-xs">(${s.ticker})</span></p>
+            <span class="text-xs mono negative shrink-0">${s.change_note || ''}</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-1">${s.price_note || ''}</p>
+          <p class="text-sm text-gray-300 mb-1.5"><span class="text-gray-500">Why:</span> ${s.reasoning || ''}</p>
+          <p class="text-xs text-gray-400 mb-1"><span class="text-gray-500">News:</span> ${s.news || ''}</p>
+          ${s.trend_note ? `<p class="text-xs text-gray-500">Trend: ${s.trend_note}</p>` : ''}
+          ${s.chart ? `<p class="text-[11px] mt-1.5"><a href="${s.chart}" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline underline-offset-2">${s.chart_label || 'View chart →'}</a></p>` : ''}
+        </div>
+      `).join('') : (b.focus_stocks?.pressure || []).map(s => `
+        <div class="flex justify-between py-2.5 border-b border-dark-600 last:border-0">
+          <span class="text-sm">${s.name}</span>
+          <span class="text-sm mono negative">${s.note}</span>
+        </div>
+      `).join('');
+
+      const outlookHtml = b.outlook.map((o, i) => `
+        <div class="flex gap-3">
+          <span class="text-amber-400 font-bold shrink-0">${i + 1}.</span>
+          <p class="text-sm text-gray-300">${o}</p>
+        </div>
+      `).join('');
+
+      const overviewHtml = b.market_overview
+        ? `<div class="bg-dark-800 border border-dark-600 rounded-2xl p-5 mb-6">
+             <h3 class="text-sm font-semibold text-gray-300 mb-2">Market Overview</h3>
+             <p class="text-sm text-gray-300 leading-relaxed">${b.market_overview}</p>
+           </div>`
+        : '';
+
+      const globalHtml = b.global_cues
+        ? `<div class="bg-dark-800 border border-dark-600 rounded-2xl p-4 mb-4">
+             <p class="text-[10px] text-blue-400 font-semibold tracking-wide mb-1">GLOBAL CUES</p>
+             <p class="text-sm text-gray-300">${b.global_cues}</p>
+           </div>`
+        : '';
+
+      const fiiHtml = b.fii_dii
+        ? `<div class="bg-dark-800 border border-dark-600 rounded-2xl p-4 mb-6">
+             <p class="text-[10px] text-gray-400 font-semibold tracking-wide mb-1">FII / DII</p>
+             <p class="text-sm text-gray-300">${b.fii_dii}</p>
+           </div>`
+        : '';
+
+      document.getElementById('detail-content').innerHTML = `
+        <div class="mb-6">
+          <div class="flex items-center gap-2 mb-1">
+            <h2 class="text-2xl font-bold">${formatDate(b.date)}</h2>
+            <span class="text-sm text-gray-400">${b.day}</span>
+            ${b.status === 'open' ? '<span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/25">OPEN</span>' : '<span class="text-[10px] px-2 py-0.5 rounded-full bg-gray-500/15 text-gray-400 border border-gray-500/25">CLOSED</span>'}
+          </div>
+          <p class="text-sm text-gray-400">${b.summary.headline}</p>
+        </div>
+
+        <!-- Snapshot -->
+        <div class="grid grid-cols-2 gap-3 mb-6">
+          <div class="bg-dark-800 border border-dark-600 rounded-2xl p-4">
+            <p class="text-xs text-gray-400">NIFTY 50</p>
+            <p class="text-2xl font-bold mono mt-0.5">${nifty.value.toLocaleString('en-IN')}</p>
+            <p class="text-sm mono ${changeClass}">${changeSign}${nifty.change.toFixed(2)} (${changeSign}${nifty.change_pct.toFixed(2)}%)</p>
+          </div>
+          <div class="bg-dark-800 border border-dark-600 rounded-2xl p-4">
+            <p class="text-xs text-gray-400">SENSEX</p>
+            <p class="text-2xl font-bold mono mt-0.5">${b.summary.sensex.value.toLocaleString('en-IN')}</p>
+            <p class="text-sm mono ${b.summary.sensex.change_pct >= 0 ? 'positive' : 'negative'}">${b.summary.sensex.change_pct >= 0 ? '+' : ''}${b.summary.sensex.change_pct.toFixed(2)}%</p>
+          </div>
+        </div>
+
+        ${overviewHtml}
+
+        <!-- Top Performer highlight -->
+        <div class="bg-emerald-500/10 border border-emerald-500/25 rounded-2xl p-4 mb-6">
+          <p class="text-[10px] text-emerald-400 font-semibold tracking-wide mb-1">TOP PERFORMER / RELATIVE STRENGTH</p>
+          <p class="font-semibold">${b.summary.top_performer.name} <span class="mono positive text-sm">+${b.summary.top_performer.change_pct}%</span></p>
+          <p class="text-sm text-gray-300 mt-0.5">${b.summary.top_performer.reason}</p>
+        </div>
+
+        <!-- Drivers -->
+        <h3 class="text-sm font-semibold text-gray-300 mb-3">Key Drivers</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">${driversHtml}</div>
+
+        ${globalHtml}
+        ${fiiHtml}
+
+        <!-- Sectors -->
+        <h3 class="text-sm font-semibold text-gray-300 mb-3">Sector Pulse</h3>
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-6">${sectorsHtml}</div>
+
+        <!-- Top 5 Upward Stocks -->
+        <h3 class="text-sm font-semibold text-emerald-400 mb-3">Section 1: Top 5 Upward Stocks</h3>
+        <div class="mb-6">${upStocksHtml}</div>
+
+        <!-- Top 5 Downward Stocks -->
+        <h3 class="text-sm font-semibold text-red-400 mb-3">Section 2: Top 5 Downward Stocks</h3>
+        <div class="mb-6">${downStocksHtml}</div>
+
+        <!-- Outlook -->
+        <h3 class="text-sm font-semibold text-gray-300 mb-3">Outlook & Takeaways</h3>
+        <div class="bg-dark-800 border border-dark-600 rounded-2xl p-5 space-y-3.5 mb-6">${outlookHtml}</div>
+
+        ${b.impact_next_day ? `
+        <!-- Impact on Tomorrow -->
+        <div class="bg-blue-500/10 border border-blue-500/30 rounded-2xl p-5 mb-6">
+          <p class="text-[10px] text-blue-400 font-semibold tracking-wide mb-2">${b.impact_next_day.title || 'Impact on Tomorrow / Next Trading Day'}</p>
+          <p class="text-sm text-gray-200 leading-relaxed mb-4">${b.impact_next_day.summary || ''}</p>
+          <ul class="space-y-2.5 mb-4">
+            ${(b.impact_next_day.key_points || []).map(p => `
+              <li class="flex gap-2 text-sm text-gray-300">
+                <span class="text-blue-400 shrink-0">→</span>
+                <span>${p}</span>
+              </li>
+            `).join('')}
+          </ul>
+          <p class="text-xs font-medium text-blue-300 border-t border-blue-500/20 pt-3">
+            Bias for next session: ${b.impact_next_day.bias_for_tomorrow || '—'}
+          </p>
+        </div>
+        ` : ''}
+
+        ${b.previous_day_note ? `<p class="text-xs text-gray-500 border-t border-dark-600 pt-4"><strong>Previous session:</strong> ${b.previous_day_note}</p>` : ''}
+
+        <div class="text-[11px] text-gray-600 mt-6 space-y-1 border-t border-dark-600 pt-4">
+          <p>Updated: ${new Date(b.updated_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST</p>
+          <p>Sources: NSE / BSE closing data, market wrap reports, public news wires. Charts suggested via Yahoo Finance / TradingView.</p>
+          <p>For personal tracking & educational use only.</p>
+        </div>
+      `;
+    }
+
+    function showCards() {
+      document.getElementById('detail-view').classList.add('hidden');
+      document.getElementById('cards-container').classList.remove('hidden');
+    }
+
+    function formatDate(dateStr) {
+      const d = new Date(dateStr + 'T00:00:00');
+      return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+
+    // Init
+    loadBriefs();
+  </script>
+</body>
+</html>

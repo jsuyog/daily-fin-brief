@@ -1,0 +1,60 @@
+name: Daily Fin Brief Generator
+
+on:
+  schedule:
+    # Mon–Fri 10:30 UTC = 16:00 IST (after market close)
+    - cron: '30 10 * * 1-5'
+  workflow_dispatch:   # Manual run from GitHub Actions tab
+    inputs:
+      force:
+        description: 'Overwrite existing brief for today (true/false)'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Only stdlib is required right now.
+          # Uncomment later if you add yfinance / requests extras:
+          # pip install yfinance requests
+
+      - name: Generate today's brief (GenAI)
+        env:
+          # Prefer xAI Grok; Claude is automatic fallback if only ANTHROPIC key is set
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Optional overrides
+          LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}   # "xai" or "claude"
+          XAI_MODEL: ${{ secrets.XAI_MODEL }}
+          CLAUDE_MODEL: ${{ secrets.CLAUDE_MODEL }}
+          FORCE: ${{ github.event.inputs.force || 'false' }}
+        run: |
+          echo "Running GenAI brief generation..."
+          python scripts/generate_brief.py
+
+      - name: Commit & Push updated brief
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/briefs.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: daily fin brief $(date +%Y-%m-%d)"
+            git push
+          fi

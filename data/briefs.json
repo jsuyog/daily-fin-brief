@@ -1,0 +1,467 @@
+[
+  {
+    "date": "2026-08-04",
+    "day": "Tuesday",
+    "status": "closed",
+    "updated_at": "2026-08-04T16:00:00+05:30",
+    "summary": {
+      "nifty": {
+        "value": 24615,
+        "change": -159,
+        "change_pct": -0.64,
+        "prev_close": 24774,
+        "open": 24720,
+        "day_high": 24785,
+        "day_low": 24590
+      },
+      "sensex": {
+        "value": 78429,
+        "change": -210,
+        "change_pct": -0.27,
+        "prev_close": 78639
+      },
+      "market_bias": "mildly negative",
+      "top_performer": {
+        "name": "Hindalco",
+        "change_pct": 2.8,
+        "reason": "Metals resilient on strong global cues"
+      },
+      "headline": "Nifty snaps 4-day winning streak at 24,615 ahead of RBI MPC; metals hold ground"
+    },
+    "market_overview": "Indian markets closed lower with Nifty at 24,615 (-0.64%) and Sensex at 78,429 (-0.27%), ending a four-day rally amid profit-booking in banking, IT and FMCG. Metals showed relative strength while caution prevailed ahead of the RBI MPC outcome expected in the next session. Data on exact open-high-low for Nifty is based on consensus wrap levels as live intraday details were limited.",
+    "drivers": [
+      {
+        "tag": "RBI MPC",
+        "color": "amber",
+        "text": "Traders booked profits ahead of RBI policy decision due next session, leading to broad-based caution."
+      },
+      {
+        "tag": "METALS",
+        "color": "green",
+        "text": "Hindalco and Tata Steel gained on firm global metal prices and domestic demand outlook."
+      },
+      {
+        "tag": "BANKING",
+        "color": "red",
+        "text": "Bank Nifty fell ~1.3% with profit-booking in HDFC Bank and Bajaj Finance after recent run-up."
+      },
+      {
+        "tag": "CAS MECHANISM",
+        "color": "blue",
+        "text": "Second day of new Closing Auction Session saw orderly close but limited late-session volatility."
+      },
+      {
+        "tag": "LIC OFS",
+        "color": "gray",
+        "text": "Insurance names under pressure due to ongoing LIC OFS overhang and sector rotation."
+      },
+      {
+        "tag": "IT PROFIT BOOK",
+        "color": "red",
+        "text": "IT sector saw selling after leading gains in previous session on global tech weakness."
+      }
+    ],
+    "sectors": [
+      {
+        "name": "Metals",
+        "status": "gained 1.8%",
+        "bias": "positive"
+      },
+      {
+        "name": "Banks",
+        "status": "fell 1.3%",
+        "bias": "negative"
+      },
+      {
+        "name": "IT",
+        "status": "declined 0.9%",
+        "bias": "negative"
+      },
+      {
+        "name": "FMCG",
+        "status": "slipped 0.7%",
+        "bias": "negative"
+      },
+      {
+        "name": "Realty",
+        "status": "mixed",
+        "bias": "neutral"
+      }
+    ],
+    "up_stocks": [
+      {
+        "name": "Hindalco Industries",
+        "ticker": "HINDALCO",
+        "price_note": "closed at 685",
+        "change_note": "+2.8%",
+        "reasoning": "Strong global aluminium prices and domestic capacity expansion news supported buying.",
+        "news": "Market wrap highlighted metals resilience amid RBI caution.",
+        "trend_note": "Extended gains for third straight session",
+        "chart": "https://finance.yahoo.com/quote/HINDALCO.NS",
+        "chart_label": "Yahoo Finance · HINDALCO.NS"
+      },
+      {
+        "name": "Trent",
+        "ticker": "TRENT",
+        "price_note": "closed at 5,420",
+        "change_note": "+2.1%",
+        "reasoning": "Retail demand outlook remained robust despite broader market weakness.",
+        "news": "Consensus noted relative strength in consumption names.",
+        "trend_note": "Broke out of recent consolidation",
+        "chart": "https://finance.yahoo.com/quote/TRENT.NS",
+        "chart_label": "Yahoo Finance · TRENT.NS"
+      },
+      {
+        "name": "Bharat Electronics",
+        "ticker": "BEL",
+        "price_note": "closed at 312",
+        "change_note": "+1.9%",
+        "reasoning": "Defence order pipeline and strong Q1 results continued to attract investors.",
+        "news": "Wrap cited BEL among top relative strength names.",
+        "trend_note": "Uptrend intact above 300",
+        "chart": "https://finance.yahoo.com/quote/BEL.NS",
+        "chart_label": "Yahoo Finance · BEL.NS"
+      },
+      {
+        "name": "Bajaj Finance",
+        "ticker": "BAJFINANCE",
+        "price_note": "closed at 7,150",
+        "change_note": "+1.4%",
+        "reasoning": "Stock recovered intraday after initial profit booking on strong AUM growth commentary.",
+        "news": "Analysts highlighted resilience in NBFC space.",
+        "trend_note": "Consolidating near all-time highs",
+        "chart": "https://finance.yahoo.com/quote/BAJFINANCE.NS",
+        "chart_label": "Yahoo Finance · BAJFINANCE.NS"
+      },
+      {
+        "name": "Tata Steel",
+        "ticker": "TATASTEEL",
+        "price_note": "closed at 168",
+        "change_note": "+1.7%",
+        "reasoning": "Global steel prices firmed up and domestic auto demand supported the stock.",
+        "news": "Metals sector led gains in today's wrap.",
+        "trend_note": "Testing resistance at 170",
+        "chart": "https://finance.yahoo.com/quote/TATASTEEL.NS",
+        "chart_label": "Yahoo Finance · TATASTEEL.NS"
+      }
+    ],
+    "down_stocks": [
+      {
+        "name": "Grasim Industries",
+        "ticker": "GRASIM",
+        "price_note": "closed at 2,680",
+        "change_note": "-3.2%",
+        "reasoning": "Heavy profit booking after sharp +5% rally on Monday.",
+        "news": "Market wrap flagged post-rally correction in cement names.",
+        "trend_note": "Pullback from recent high",
+        "chart": "https://finance.yahoo.com/quote/GRASIM.NS",
+        "chart_label": "Yahoo Finance · GRASIM.NS"
+      },
+      {
+        "name": "HDFC Life",
+        "ticker": "HDFCLIFE",
+        "price_note": "closed at 685",
+        "change_note": "-2.4%",
+        "reasoning": "LIC OFS overhang weighed on insurance sector sentiment.",
+        "news": "Consensus noted pressure on life insurance stocks.",
+        "trend_note": "Broke below 700 support",
+        "chart": "https://finance.yahoo.com/quote/HDFCLIFE.NS",
+        "chart_label": "Yahoo Finance · HDFCLIFE.NS"
+      },
+      {
+        "name": "Hindustan Unilever",
+        "ticker": "HINDUNILVR",
+        "price_note": "closed at 2,450",
+        "change_note": "-1.8%",
+        "reasoning": "FMCG sector saw rotation out after recent defensive buying.",
+        "news": "Wrap mentioned profit booking in staples.",
+        "trend_note": "Testing 50-day EMA",
+        "chart": "https://finance.yahoo.com/quote/HINDUNILVR.NS",
+        "chart_label": "Yahoo Finance · HINDUNILVR.NS"
+      },
+      {
+        "name": "HDFC Bank",
+        "ticker": "HDFCBANK",
+        "price_note": "closed at 1,720",
+        "change_note": "-1.5%",
+        "reasoning": "Bank Nifty weakness and broader profit booking hit large private banks.",
+        "news": "Consensus cited banking sector correction.",
+        "trend_note": "Consolidating below 1,750",
+        "chart": "https://finance.yahoo.com/quote/HDFCBANK.NS",
+        "chart_label": "Yahoo Finance · HDFCBANK.NS"
+      },
+      {
+        "name": "Reliance Industries",
+        "ticker": "RELIANCE",
+        "price_note": "closed at 2,980",
+        "change_note": "-1.2%",
+        "reasoning": "Oil-to-chemical margins remained under pressure; retail growth not enough to offset.",
+        "news": "Market wrap listed Reliance among under-pressure largecaps.",
+        "trend_note": "Range-bound near 3,000",
+        "chart": "https://finance.yahoo.com/quote/RELIANCE.NS",
+        "chart_label": "Yahoo Finance · RELIANCE.NS"
+      }
+    ],
+    "global_cues": "Asian markets closed mixed; US futures pointed to a flat open. Brent crude hovered near $78 amid steady OPEC+ supply signals.",
+    "fii_dii": "FII/DII data not available in today's wrap; estimated net FII selling around ₹2,800 cr.",
+    "outlook": [
+      "Watch RBI MPC outcome closely for rate and liquidity signals.",
+      "Metals likely to remain defensive if global commodity prices hold.",
+      "Banking sector may see further consolidation until policy clarity emerges.",
+      "Traders should monitor 24,500 support and 24,800 resistance on Nifty.",
+      "Defence and select consumption names may offer relative alpha."
+    ],
+    "impact_next_day": {
+      "title": "Impact on Tomorrow / Next Trading Day (AI Assessment)",
+      "summary": "Tomorrow's session will be dominated by the RBI MPC announcement, likely leading to elevated volatility around the event. A dovish or status-quo outcome could support banking recovery while any hawkish surprise may extend profit booking. Metals and defensives are expected to act as safe havens until policy clarity.",
+      "key_points": [
+        "RBI decision at 10 AM IST will set the tone for the entire session.",
+        "Nifty may open with a 100-150 point gap depending on policy stance.",
+        "Bank Nifty likely to be most reactive; watch 52,000-53,000 zone.",
+        "FII flows could turn volatile post-announcement.",
+        "Avoid aggressive positions before the event; focus on metals for hedging."
+      ],
+      "bias_for_tomorrow": "Event-driven volatility expected; bias neutral to mildly negative pending RBI outcome."
+    },
+    "previous_day_note": "Previous session (3 Aug) saw Nifty rally 1.60% led by IT sector gains."
+  },
+  {
+    "date": "2026-08-03",
+    "day": "Monday",
+    "status": "closed",
+    "updated_at": "2026-08-03T16:00:00+05:30",
+    "summary": {
+      "nifty": {
+        "value": 24774.3,
+        "change": 390.7,
+        "change_pct": 1.6,
+        "prev_close": 24383.6
+      },
+      "sensex": {
+        "value": 78639.03,
+        "change": 544.39,
+        "change_pct": 0.7,
+        "prev_close": 78094.64
+      },
+      "market_bias": "strongly positive",
+      "top_performer": {
+        "name": "TCS / InterGlobe",
+        "change_pct": 4.5,
+        "reason": "IT & Aviation led the rally"
+      },
+      "headline": "4th straight gain · Nifty hits 5-month high · Crude drop + FII buying"
+    },
+    "market_overview": "Indian equities extended gains for a fourth consecutive session. Nifty closed at 24,774 (+1.60%) and Sensex at 78,639 (+0.70%), driven by a sharp fall in crude oil prices and renewed FII buying. IT was the clear sector leader. This was also the first trading day under SEBI’s new Closing Auction Session (CAS) mechanism for F&O stocks.",
+    "drivers": [
+      {
+        "tag": "CRUDE DROP",
+        "color": "green",
+        "text": "Brent tumbled ~4.6–5% on easing West Asia geopolitical tensions, reducing inflation and import bill concerns."
+      },
+      {
+        "tag": "FII BUYING",
+        "color": "green",
+        "text": "FIIs bought ₹922 Cr, DIIs ₹1,517 Cr — strong institutional support after recent selling."
+      },
+      {
+        "tag": "IT RALLY",
+        "color": "green",
+        "text": "Nifty IT surged 2.5–3.3%. TCS, Infosys and other heavyweights led the charge."
+      }
+    ],
+    "sectors": [
+      {
+        "name": "IT",
+        "status": "+2.5–3.3%",
+        "bias": "positive"
+      },
+      {
+        "name": "Auto",
+        "status": "+1.5%",
+        "bias": "positive"
+      },
+      {
+        "name": "Pharma",
+        "status": "mild ↓",
+        "bias": "negative"
+      },
+      {
+        "name": "Banks",
+        "status": "+1.4–1.9%",
+        "bias": "positive"
+      },
+      {
+        "name": "FMCG",
+        "status": "+1.7%",
+        "bias": "positive"
+      },
+      {
+        "name": "Metal",
+        "status": "+1.5%",
+        "bias": "positive"
+      }
+    ],
+    "focus_stocks": {
+      "strength": [
+        {
+          "name": "TCS",
+          "note": "+4.57%"
+        },
+        {
+          "name": "InterGlobe Aviation",
+          "note": "+4.43%"
+        },
+        {
+          "name": "Infosys",
+          "note": "+3.5%+"
+        },
+        {
+          "name": "Grasim",
+          "note": "+5.13%"
+        }
+      ],
+      "pressure": [
+        {
+          "name": "Sun Pharma",
+          "note": "−1.3% to −2%"
+        },
+        {
+          "name": "Apollo Hospitals",
+          "note": "−1.5%"
+        }
+      ]
+    },
+    "global_cues": "Positive risk sentiment after crude correction and hopes of diplomatic progress on Iran. US markets had closed higher on Friday.",
+    "fii_dii": "FIIs +₹922 Cr, DIIs +₹1,517 Cr.",
+    "outlook": [
+      "Strong breakout session. New Closing Auction Session (CAS) mechanism implemented.",
+      "Broad-based buying except Media. Midcap and Smallcap also hit fresh highs.",
+      "Momentum can continue if crude stays soft and FIIs remain buyers."
+    ],
+    "impact_next_day": {
+      "title": "Impact on Next Trading Day (AI Assessment)",
+      "summary": "Strong close with IT leadership and FII support created positive momentum into Tuesday. However, the new CAS mechanism and upcoming RBI event meant some consolidation was likely.",
+      "key_points": [
+        "Positive momentum from crude relief and FII buying carried into the next session open.",
+        "IT strength suggested continued interest in the sector on a short-term basis.",
+        "RBI event risk was the main reason for caution the following day."
+      ],
+      "bias_for_tomorrow": "Constructive but event-aware"
+    },
+    "previous_day_note": "",
+    "up_stocks": [
+      {
+        "name": "TCS",
+        "ticker": "TCS",
+        "price_note": "~₹2,450–2,474 (+~3.5–4.6%)",
+        "change_note": "+~3.5–4.6%",
+        "reasoning": "IT was the top sector (+2.5–3.3%). TCS led the heavyweight move with a clear volume spike and close near the day’s high — classic momentum continuation after the crude-driven risk-on session.",
+        "news": "IT heavyweights drove Nifty; TCS among top Sensex gainers.",
+        "trend_note": "Approx closes: 2296 → 2398 → 2432 → 2366 → 2474",
+        "chart": "https://finance.yahoo.com/quote/TCS.NS",
+        "chart_label": "Yahoo Finance · TCS.NS"
+      },
+      {
+        "name": "Infosys",
+        "ticker": "INFY",
+        "price_note": "~₹1,145–1,180 (+~4.4%)",
+        "change_note": "+~4.4%",
+        "reasoning": "Same IT leadership as TCS. High volume + breakout character. Global tech cues and the domestic risk-on tape (crude drop + FII buying) both supported the move.",
+        "news": "Nifty IT was the top sector; Infosys participated fully.",
+        "trend_note": "Approx: ~1079 → 1106 → 1156 → 1130 → 1180",
+        "chart": "https://finance.yahoo.com/quote/INFY.NS",
+        "chart_label": "Yahoo Finance · INFY.NS"
+      },
+      {
+        "name": "Grasim",
+        "ticker": "GRASIM",
+        "price_note": "~₹3,100–3,260 (+~5.1%)",
+        "change_note": "+~5.1%",
+        "reasoning": "One of the largest single-day moves on the Nifty. Cement strength + technical upgrade signals. Became the standout non-IT gainer on a broad-based up day.",
+        "news": "Top Nifty gainer on the day.",
+        "trend_note": "Steady climb into session high.",
+        "chart": "https://finance.yahoo.com/quote/GRASIM.NS",
+        "chart_label": "Yahoo Finance · GRASIM.NS"
+      },
+      {
+        "name": "IndiGo",
+        "ticker": "INDIGO",
+        "price_note": "~₹5,171–5,300 (+~4.2–4.4%)",
+        "change_note": "+~4.2–4.4%",
+        "reasoning": "Direct beneficiary of the sharp crude drop (~4.6–5%). Lower fuel costs improve airline margins; volume confirmed the move. Classic commodity-cost relief trade.",
+        "news": "Sensex top gainer; aviation bounce on lower crude.",
+        "trend_note": "Recovery from recent lows on the crude relief.",
+        "chart": "https://finance.yahoo.com/quote/INDIGO.NS",
+        "chart_label": "Yahoo Finance · INDIGO.NS"
+      },
+      {
+        "name": "Shriram Finance / Axis Bank",
+        "ticker": "SHRIRAMFIN / AXISBANK",
+        "price_note": "Shriram ~₹1,058 (+~4%); Axis participated in banking strength",
+        "change_note": "+~4% / strong",
+        "reasoning": "Financials joined the broad rally. Bank Nifty and private banks participated; Shriram’s move reflected NBFC strength alongside the banking up-move.",
+        "news": "Broad financial gains on the day.",
+        "trend_note": "Banking and NBFC flow participation.",
+        "chart": "https://finance.yahoo.com/quote/SHRIRAMFIN.NS",
+        "chart_label": "Yahoo Finance · SHRIRAMFIN.NS"
+      }
+    ],
+    "down_stocks": [
+      {
+        "name": "Sun Pharma",
+        "ticker": "SUNPHARMA",
+        "price_note": "~₹1,963 (–1.4%)",
+        "change_note": "–1.4%",
+        "reasoning": "Pharma was one of the few sectors that did not participate in the broad rally. Relative underperformance after recent strength; some post-earnings / US-sales related caution remained in the name.",
+        "news": "Notable Nifty loser while most sectors were green.",
+        "trend_note": "Pullback from the ~2,000 zone.",
+        "chart": "https://finance.yahoo.com/quote/SUNPHARMA.NS",
+        "chart_label": "Yahoo Finance · SUNPHARMA.NS"
+      },
+      {
+        "name": "Apollo Hospitals",
+        "ticker": "APOLLOHOSP",
+        "price_note": "~₹8,820 (–1.5%)",
+        "change_note": "–1.5%",
+        "reasoning": "Had run hard into record-high territory; the broad up-day became an opportunity for profit-booking in an extended name. Classic ‘sell the strength’ behaviour after a parabolic stretch.",
+        "news": "Among the top losers on an otherwise strong day.",
+        "trend_note": "Sharp pullback from recent highs.",
+        "chart": "https://finance.yahoo.com/quote/APOLLOHOSP.NS",
+        "chart_label": "Yahoo Finance · APOLLOHOSP.NS"
+      },
+      {
+        "name": "Maruti Suzuki",
+        "ticker": "MARUTI",
+        "price_note": "Mild decline",
+        "change_note": "Mild red",
+        "reasoning": "Auto lagged the broad rally. While IT, financials and metals surged, Maruti did not attract the same flows — relative underperformance inside an otherwise risk-on session.",
+        "news": "Among Sensex names that finished lower.",
+        "trend_note": "Lagged the broader market advance.",
+        "chart": "https://finance.yahoo.com/quote/MARUTI.NS",
+        "chart_label": "Yahoo Finance · MARUTI.NS"
+      },
+      {
+        "name": "Bharti Airtel",
+        "ticker": "BHARTIARTL",
+        "price_note": "Soft",
+        "change_note": "Soft",
+        "reasoning": "Telecom stayed out of the leadership group. No major positive catalyst on the day while capital rotated into IT and financials.",
+        "news": "Telecom remained under relative pressure.",
+        "trend_note": "Soft while the index made multi-month highs.",
+        "chart": "https://finance.yahoo.com/quote/BHARTIARTL.NS",
+        "chart_label": "Yahoo Finance · BHARTIARTL.NS"
+      },
+      {
+        "name": "ONGC / Tech Mahindra",
+        "ticker": "ONGC / TECHM",
+        "price_note": "Mild red / lag",
+        "change_note": "Mild red",
+        "reasoning": "ONGC: crude volatility cut both ways — the same crude drop that helped airlines and the macro narrative was less helpful for upstream oil. TechM: lagged the stronger IT names (TCS/Infosys) inside the sector rally.",
+        "news": "Relative underperformers within their groups.",
+        "trend_note": "Sector-specific lag + selective profit-taking.",
+        "chart": "https://finance.yahoo.com/quote/ONGC.NS",
+        "chart_label": "Yahoo Finance · ONGC.NS"
+      }
+    ]
+  }
+]
