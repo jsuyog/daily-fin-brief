@@ -63,7 +63,7 @@ XAI_API_URL = "https://api.x.ai/v1/chat/completions"
 ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages"
 
 # Models (adjust if you have access to newer ones)
-XAI_MODEL = os.getenv("XAI_MODEL", "grok-3")
+XAI_MODEL = os.getenv("XAI_MODEL", "grok-4")
 CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-20250514")
 
 
