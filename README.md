@@ -84,30 +84,6 @@ python -m http.server 8000
 # Open http://localhost:8000
 ```
 
----
-
-## Resume bullet (ready to use)
-
-> Designed and built an end-to-end automated daily market brief system using **GitHub Actions**, **GenAI (LLM)**, and a static frontend. The pipeline fetches market data, generates structured analysis via LLM, commits updates (GitOps), and serves newest-first cards on GitHub Pages. Demonstrates CI/CD, AI integration, and data-driven UI.
-
----
-
-## Next enhancements (good interview talking points)
-
-- Replace mock data with real sources (yfinance / NSE / Moneycontrol)
-- Stronger prompt engineering + JSON schema validation
-- Auto-post summary to X
-- Slack / Discord notification when a new brief is published
-- Simple archive filter by month
-- Move Tailwind to a proper build (optional)
-
----
-
-**Author:** Suyog Jagtap ([@suyog_j_](https://x.com/suyog_j_))  
-Cloud / SRE · Building practical automation projects
-
----
-
 ## GenAI Setup (xAI Grok + Claude)
 
 The pipeline supports **both** providers. Preference order:
