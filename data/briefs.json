@@ -1,5 +1,246 @@
 [
   {
+    "date": "2026-09-25",
+    "day": "Friday",
+    "status": "closed",
+    "updated_at": "2026-09-25T16:15:00+05:30",
+    "summary": {
+      "nifty": {
+        "value": 24615,
+        "change": -159,
+        "change_pct": -0.64,
+        "prev_close": 24774,
+        "open": 24748,
+        "day_high": 24792,
+        "day_low": 24572
+      },
+      "sensex": {
+        "value": 78429,
+        "change": -210,
+        "change_pct": -0.27,
+        "prev_close": 78639
+      },
+      "market_bias": "mildly negative",
+      "top_performer": {
+        "name": "Hindalco",
+        "change_pct": 2.1,
+        "reason": "Metals resilience on firm LME cues and domestic demand optimism"
+      },
+      "headline": "Nifty snaps 4-day winning streak; caution builds ahead of RBI MPC"
+    },
+    "market_overview": "Indian equities closed lower on Friday, with Nifty ending at 24,615 (−0.64%) and Sensex at 78,429 (−0.27%), snapping a four-day rally as traders locked in gains ahead of the RBI MPC outcome due in the next session. Bank Nifty underperformed sharply (−1.30%) on broad PSU and private bank profit-booking, while metals stayed resilient. IT and FMCG also saw selective selling; the second day of the new Closing Auction Session (CAS) mechanism added some end-of-day volatility. Reference levels draw from the latest available wrap; intra-day ticks beyond consensus closes were limited.",
+    "drivers": [
+      {
+        "tag": "RBI MPC CAUTION",
+        "color": "amber",
+        "text": "Positioning turned defensive as markets await the MPC decision next session; rate-path uncertainty capped upside and triggered profit-booking in rate-sensitive banks and NBFCs."
+      },
+      {
+        "tag": "BANKING WEAKNESS",
+        "color": "red",
+        "text": "Bank Nifty dropped ~1.30% with HDFC Bank and peers leading the decline on valuation concerns and pre-event de-risking after the recent run-up."
+      },
+      {
+        "tag": "METALS RESILIENCE",
+        "color": "green",
+        "text": "Hindalco and Tata Steel held relative strength on stable LME aluminium/copper cues and expectations of sustained domestic infrastructure demand."
+      },
+      {
+        "tag": "PROFIT BOOKING",
+        "color": "gray",
+        "text": "IT, FMCG and select conglomerates (Grasim after Monday’s sharp spike) faced selling as the four-day winning streak invited profit-taking at higher levels."
+      },
+      {
+        "tag": "LIC OFS OVERHANG",
+        "color": "amber",
+        "text": "Insurance names including HDFC Life remained under pressure on lingering LIC OFS supply concerns and sector rotation away from financials."
+      },
+      {
+        "tag": "CAS MECHANISM",
+        "color": "blue",
+        "text": "Second day of the new Closing Auction Session saw slightly elevated closing volatility but orderly price discovery without major dislocations."
+      }
+    ],
+    "sectors": [
+      {
+        "name": "Metals",
+        "status": "outperformed on LME support",
+        "bias": "positive"
+      },
+      {
+        "name": "Banks",
+        "status": "sharp profit-booking, Bank Nifty −1.3%",
+        "bias": "negative"
+      },
+      {
+        "name": "IT",
+        "status": "mild selling after recent strength",
+        "bias": "negative"
+      },
+      {
+        "name": "FMCG",
+        "status": "defensive names under pressure",
+        "bias": "negative"
+      },
+      {
+        "name": "Auto",
+        "status": "mixed, selective support",
+        "bias": "neutral"
+      },
+      {
+        "name": "Pharma",
+        "status": "range-bound, limited participation",
+        "bias": "neutral"
+      },
+      {
+        "name": "Realty",
+        "status": "muted volumes, sideway",
+        "bias": "neutral"
+      },
+      {
+        "name": "Insurance",
+        "status": "OFS overhang weighed",
+        "bias": "negative"
+      }
+    ],
+    "up_stocks": [
+      {
+        "name": "Hindalco Industries",
+        "ticker": "HINDALCO",
+        "price_note": "outperformed benchmark",
+        "change_note": "+2.1%",
+        "reasoning": "Bought on firm LME aluminium prices and expectations of strong Q2 domestic flat-rolled product demand; metals basket stayed bid while broader market corrected.",
+        "news": "Market wrap highlighted metals resilience; Hindalco cited among top relative-strength names amid global base-metal stability.",
+        "trend_note": "Extending short-term outperformance vs Nifty after consolidation",
+        "chart": "https://finance.yahoo.com/quote/HINDALCO.NS",
+        "chart_label": "Yahoo Finance · HINDALCO.NS"
+      },
+      {
+        "name": "Trent",
+        "ticker": "TRENT",
+        "price_note": "held gains on retail strength",
+        "change_note": "+1.6%",
+        "reasoning": "Continued institutional interest in discretionary retail recovery narrative; same-store sales optimism and limited profit-booking versus peers kept the stock bid.",
+        "news": "Wraps flagged Trent among top relative-strength names even as FMCG and broader consumption names saw selling.",
+        "trend_note": "Remains in higher-high structure on weekly charts",
+        "chart": "https://finance.yahoo.com/quote/TRENT.NS",
+        "chart_label": "Yahoo Finance · TRENT.NS"
+      },
+      {
+        "name": "Bharat Electronics",
+        "ticker": "BEL",
+        "price_note": "defence order-flow support",
+        "change_note": "+1.4%",
+        "reasoning": "Defence PSU bid sustained on order-book visibility and expectation of further capital allocation in upcoming budget cycle; acted as relative safe haven today.",
+        "news": "BEL listed in top relative-strength cohort while IT and banks corrected.",
+        "trend_note": "Medium-term uptrend intact; dips continue to attract buyers",
+        "chart": "https://finance.yahoo.com/quote/BEL.NS",
+        "chart_label": "Yahoo Finance · BEL.NS"
+      },
+      {
+        "name": "Bajaj Finance",
+        "ticker": "BAJFINANCE",
+        "price_note": "selective NBFC bid",
+        "change_note": "+0.9%",
+        "reasoning": "Stood out versus bank underperformance on strong AUM growth commentary and lower perceived MPC sensitivity versus deposit-funded lenders; bargain hunting after recent consolidation.",
+        "news": "Named in relative-strength list despite broader financials pressure ahead of RBI.",
+        "trend_note": "Stabilising after multi-week base formation",
+        "chart": "https://finance.yahoo.com/quote/BAJFINANCE.NS",
+        "chart_label": "Yahoo Finance · BAJFINANCE.NS"
+      },
+      {
+        "name": "Tata Steel",
+        "ticker": "TATASTEEL",
+        "price_note": "metals complex support",
+        "change_note": "+0.8%",
+        "reasoning": "Tracked global steel price stability and domestic volume recovery hopes; attracted flows rotating out of banks into commodity cyclicals.",
+        "news": "Wrap consensus put Tata Steel alongside Hindalco as metals resilient names on the day.",
+        "trend_note": "Short-term bounce within broader range",
+        "chart": "https://finance.yahoo.com/quote/TATASTEEL.NS",
+        "chart_label": "Yahoo Finance · TATASTEEL.NS"
+      }
+    ],
+    "down_stocks": [
+      {
+        "name": "Grasim Industries",
+        "ticker": "GRASIM",
+        "price_note": "sharp reversal from Monday spike",
+        "change_note": "−2.4%",
+        "reasoning": "Heavy profit-booking after the +5% surge earlier in the week; paint and chemicals valuation concerns resurfaced once the broader market turned risk-off.",
+        "news": "Explicitly flagged in wraps as under pressure on profit-booking following Monday’s outsized move.",
+        "trend_note": "Giving back part of the impulsive weekly gain",
+        "chart": "https://finance.yahoo.com/quote/GRASIM.NS",
+        "chart_label": "Yahoo Finance · GRASIM.NS"
+      },
+      {
+        "name": "HDFC Life Insurance",
+        "ticker": "HDFCLIFE",
+        "price_note": "insurance sector drag",
+        "change_note": "−1.9%",
+        "reasoning": "LIC OFS overhang continued to weigh on the insurance pack; pre-MPC risk reduction hit growth financials harder than the index.",
+        "news": "Wraps linked insurance weakness to LIC OFS supply concerns and broader financials de-risking.",
+        "trend_note": "Remains below key moving averages; supply overhang intact",
+        "chart": "https://finance.yahoo.com/quote/HDFCLIFE.NS",
+        "chart_label": "Yahoo Finance · HDFCLIFE.NS"
+      },
+      {
+        "name": "Hindustan Unilever",
+        "ticker": "HINDUNILVR",
+        "price_note": "FMCG profit-booking",
+        "change_note": "−1.5%",
+        "reasoning": "Defensive staple sold as traders reduced exposure ahead of the policy event; rural recovery narrative took a back seat to near-term positioning.",
+        "news": "HUL listed among under-pressure names with FMCG seeing broad profit-booking.",
+        "trend_note": "Consolidating after failed breakout attempt",
+        "chart": "https://finance.yahoo.com/quote/HINDUNILVR.NS",
+        "chart_label": "Yahoo Finance · HINDUNILVR.NS"
+      },
+      {
+        "name": "HDFC Bank",
+        "ticker": "HDFCBANK",
+        "price_note": "led banking drag",
+        "change_note": "−1.4%",
+        "reasoning": "Private bank heavyweight faced valuation-led selling and pre-RBI de-risking; large weight amplified Bank Nifty’s 1.3% decline.",
+        "news": "Explicitly cited in under-pressure list alongside broader banking weakness.",
+        "trend_note": "Short-term momentum rolled over after recent outperformance",
+        "chart": "https://finance.yahoo.com/quote/HDFCBANK.NS",
+        "chart_label": "Yahoo Finance · HDFCBANK.NS"
+      },
+      {
+        "name": "Reliance Industries",
+        "ticker": "RELIANCE",
+        "price_note": "index heavyweight drag",
+        "change_note": "−0.9%",
+        "reasoning": "Mild profit-booking in energy and retail verticals; stock moved with the broader risk-off tone rather than stock-specific negative news.",
+        "news": "Named among under-pressure large-caps in the closing consensus wrap.",
+        "trend_note": "Range-bound; still holding longer-term support zone",
+        "chart": "https://finance.yahoo.com/quote/RELIANCE.NS",
+        "chart_label": "Yahoo Finance · RELIANCE.NS"
+      }
+    ],
+    "global_cues": "Global markets mixed with Wall Street cautious on upcoming data; crude held steady in a tight band while Asian peers showed limited direction. No major geopolitical shock, keeping focus squarely on domestic RBI outcome.",
+    "fii_dii": "Provisional flows indicated continued FII selling pressure into the event, partially offset by DII support; exact final figures awaited post-CAS settlement.",
+    "outlook": [
+      "Next session entirely dominated by RBI MPC decision and accompanying commentary on inflation and growth.",
+      "Bank Nifty and rate-sensitives will be the primary swing factors; watch for any shift in liquidity or stance language.",
+      "Metals may retain relative bid if global commodity prices stay firm, offering a hedge against policy volatility.",
+      "Keep position sizes light into the announcement; favour stocks with clear fundamental catalysts over pure beta.",
+      "CAS mechanism remains new—monitor closing liquidity and avoid last-minute auction surprises."
+    ],
+    "impact_next_day": {
+      "title": "Impact on Tomorrow / Next Trading Day (AI Assessment)",
+      "summary": "Friday’s defensive close and snapped winning streak set a cautious tone for the RBI MPC session. A status-quo hold with neutral-to-dovish commentary could trigger short-covering in banks and Nifty toward 24,750–24,800, while any hawkish surprise on inflation would extend selling toward 24,400–24,500. Metals strength may persist as a relative safe pocket regardless of the rate decision.",
+      "key_points": [
+        "RBI decision and policy statement will dictate gap-open and first-hour direction; consensus leans hold but language on future path is key.",
+        "Bank Nifty’s −1.3% underperformance leaves it vulnerable to further de-leveraging if commentary is restrictive, or sharp bounce if accommodative.",
+        "Pre-event profit-booking has cleaned some froth—reducing risk of cascading stops on a mild negative surprise.",
+        "Hindalco/Tata Steel relative strength can continue if global metals hold, providing sector rotation avenue.",
+        "Second-day CAS experience suggests orderly closes, but expect elevated volumes and wider spreads around the policy release window."
+      ],
+      "bias_for_tomorrow": "Event-driven and binary; base case mildly positive bounce if RBI holds with balanced tone, else extended consolidation."
+    },
+    "previous_day_note": "Prior session had seen Nifty at 24,774 (+1.60%) with IT leadership; today’s decline fully reversed that momentum ahead of the policy event."
+  },
+  {
     "date": "2026-09-24",
     "day": "Thursday",
     "status": "closed",
